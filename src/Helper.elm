@@ -1,6 +1,21 @@
 module Helper exposing (..)
 
-import Html exposing (Html, div, h1, li, text, ul)
+import Html
+
+
+add2 : Int -> Int -> Int
+add2 int1 int2 =
+    int1 + int2
+
+
+add3 : Float -> Float -> Float -> Float
+add3 int1 int2 int3 =
+    int1 + int2 + int3
+
+
+calc : Int -> Int -> (Int -> Int -> Int) -> Int
+calc int1 int2 operator =
+    operator int1 int2
 
 
 languages : List { name : String, releaseYear : Int, currentVersion : String }
@@ -84,16 +99,16 @@ myLaptop =
     }
 
 
-main : Html msg
+main : Html.Html msg
 main =
-    div []
-        [ h1 [] [ text "My laptop" ]
-        , div []
-            [ ul []
-                [ li [] [ text ("Ram: " ++ myLaptop.ram) ]
-                , li [] [ text ("Modelo: " ++ myLaptop.model) ]
-                , li [] [ text ("Marca: " ++ myLaptop.brand) ]
-                , li [] [ text ("Pulgadas: " ++ myLaptop.screenSize) ]
+    Html.div []
+        [ Html.h1 [] [ Html.text "My laptop" ]
+        , Html.div []
+            [ Html.ul []
+                [ Html.li [] [ Html.text ("Ram: " ++ myLaptop.ram) ]
+                , Html.li [] [ Html.text ("Modelo: " ++ myLaptop.model) ]
+                , Html.li [] [ Html.text ("Marca: " ++ myLaptop.brand) ]
+                , Html.li [] [ Html.text ("Pulgadas: " ++ myLaptop.screenSize) ]
                 ]
             ]
         ]
