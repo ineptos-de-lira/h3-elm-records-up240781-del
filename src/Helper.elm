@@ -3,13 +3,14 @@ module Helper exposing (..)
 import Html exposing (Html, div, h1, li, text, ul)
 
 
-languages : List { name : String, releaseYear : number, currentVersion : String }
+languages : List { name : String, releaseYear : Int, currentVersion : String }
 languages =
     [ { name = "elm", releaseYear = 2012, currentVersion = "0.19.1" }
     , { name = "javascript", releaseYear = 1995, currentVersion = "ECMAScript 2025" }
     ]
 
 
+languageNames : List { name : String, releaseYear : Int, currentVersion : String } -> List String
 languageNames list =
     List.map .name list
 
@@ -21,8 +22,10 @@ users =
     ]
 
 
+onlyStudents : List { name : String, uType : String } -> List String
 onlyStudents list =
     let
+        checkStudent : { name : String, uType : String } -> String
         checkStudent user =
             if user.uType == "Student" then
                 user.name
@@ -59,6 +62,7 @@ games =
     ]
 
 
+getVideogameGenres : List Videogame -> List (List String)
 getVideogameGenres list =
     List.map .genres list
 
